@@ -1,22 +1,34 @@
 import random
+import time
 
-# Get the user's name
-varUserName = input("Hello! What's your name? ")
+# Function to display the numbers with a delay and color
+def display_lottery_numbers():
+    print("Generating your PowerBall numbers...")
+    
+    # Generate and print the first five numbers with a delay
+    white_balls = [random.randint(1, 69) for _ in range(5)]
+    for i in range(5):
+        print(f"{white_balls[i]}", end="  ", flush=True)
+        time.sleep(0.25)
+        
+    # Generate and print the last number in red with a delay
+    red_ball = random.randint(1, 26)
+    print(f"\033[91m{red_ball}\033[0m") # ANSI escape code for red color
+    time.sleep(0.25)
 
-# Greet the user
-print(f"Hi, {varUserName}! Let's generate some PowerBall numbers for you.")
+# Main part of the script
+def main():
+    # Get the user's name
+    varUserName = input("Hello! What's your name? ")
 
-# Generate the six random numbers
-white_ball_1 = random.randint(1, 69)
-white_ball_2 = random.randint(1, 69)
-white_ball_3 = random.randint(1, 69)
-white_ball_4 = random.randint(1, 69)
-white_ball_5 = random.randint(1, 69)
-red_ball = random.randint(1, 26)
+    # Greet the user
+    print(f"Hi, {varUserName}! Let's generate some PowerBall numbers for you.")
 
-# Print the generated numbers
-# We convert each number to a string to easily add spaces between them.
-print(f"Your PowerBall numbers are: {str(white_ball_1)}  {str(white_ball_2)}  {str(white_ball_3)}  {str(white_ball_4)}  {str(white_ball_5)}    {str(red_ball)}")
+    # Display the numbers
+    display_lottery_numbers()
 
-# Farewell message
-print("Good luck! Hope you win big!")
+    # Farewell message
+    print("Good luck! Hope you win big!")
+
+if __name__ == "__main__":
+    main()
